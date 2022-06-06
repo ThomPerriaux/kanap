@@ -43,22 +43,24 @@ let productColorOption; // options de couleurs
       productColorOption.value = `${color}`;
       productColors.appendChild(productColorOption);
     });
-   
-   
 
-  let addToBasket = document.querySelector('#addToCart');
+    let scriptToModule = document.querySelector("script");
+    
+    let addToBasket = document.querySelector('#addToCart');
+  
       addToBasket.addEventListener("click", (e) => { 
+        addToCart();
 
+        function addToCart() {
+        
         let quantityPicked = quantity.value; // qté selectionnée
         let colorPicked = colors.value; //couleur selectionnée
         let id_Color = id + "_"+ colorPicked;
-
-    
+                   
          if(localStorage.getItem(id_Color)!== null){
            localStorage.setItem(id_Color,parseInt(localStorage.getItem(id_Color))+parseInt(quantityPicked))
          } else {
            localStorage.setItem(id_Color,quantityPicked)
-         }      
-        
+         }}
       });
     });
